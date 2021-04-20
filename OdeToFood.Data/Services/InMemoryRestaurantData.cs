@@ -17,7 +17,7 @@ namespace OdeToFood.Data.Services
                 new Restaurant { Id = 2, Name = "Tersiguels", Cuisine = CuisineType.French },
                 new Restaurant { Id = 3, Name = "Mango Grove", Cuisine = CuisineType.Indian },
                 new Restaurant { Id = 4, Name = "Nando's", Cuisine = CuisineType.Portuguese }
-        };
+            };
         }
 
         public void Add(Restaurant restaurant)
@@ -44,6 +44,15 @@ namespace OdeToFood.Data.Services
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants.OrderBy(r => r.Name);
+        }
+
+        public void Delete(int id)
+        {
+            var restaurant = Get(id);
+            if(restaurant != null)
+            {
+                restaurants.Remove(restaurant);
+            }
         }
     }
 }
